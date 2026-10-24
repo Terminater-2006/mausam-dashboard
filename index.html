@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; connect-src https://api.open-meteo.com https://geocoding-api.open-meteo.com https://air-quality-api.open-meteo.com; img-src 'self' data: https://tile.openstreetmap.org https://*.tile.openstreetmap.org;">
+<title>Mausam Dashboard — India</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="hero-card">
+      <div class="hero-city" id="heroCity">Delhi</div>
+      <div class="hero-country" id="heroCountry">India</div>
+      <div class="hero-pill" id="heroPill">—</div>
+      <div class="hero-temp" id="heroTemp">--°</div>
+    </div>
+    <div class="recent" id="recent"></div>
+    <nav class="cities" id="cities"></nav>
+  </aside>
+
+  <main class="main">
+    <div class="search-row">
+      <input id="searchInput" type="text" placeholder="Search Indian city…" autocomplete="off" aria-label="Search Indian city">
+      <button id="searchBtn">Search</button>
+      <div id="suggestions" class="suggestions" role="listbox" aria-label="City suggestions"></div>
+    </div>
+
+    <section class="panel report">
+      <h2>Local Weather Report</h2>
+      <div class="report-body">
+        <div class="report-icon" id="reportIcon"></div>
+        <div>
+          <div class="report-day" id="reportDay">—</div>
+          <div class="report-temp" id="reportTemp">--°</div>
+          <div class="report-feels" id="reportFeels">Feels like --°</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid4">
+      <div class="panel card"><span>Temperature</span><b id="cTemp">--°</b></div>
+      <div class="panel card"><span>Humidity</span><b id="cHum">--%</b></div>
+      <div class="panel card"><span>Wind</span><b id="cWind">-- km/h</b></div>
+      <div class="panel card"><span>Feels like</span><b id="cFeels">--°</b></div>
+    </section>
+
+    <section class="grid4">
+      <div class="panel card"><span>UV Index</span><b id="cUv">--</b></div>
+      <div class="panel card"><span>Air Quality (US AQI)</span><b id="cAqi">--</b></div>
+      <div class="panel card"><span>Sunrise</span><b id="cSunrise">--</b></div>
+      <div class="panel card"><span>Sunset</span><b id="cSunset">--</b></div>
+    </section>
+
+    <section class="panel">
+      <h2>Rain Chance Next 7 Days</h2>
+      <div class="rainbars" id="rainBars"></div>
+    </section>
+
+    <section class="panel" id="mapPanel">
+      <h2>India Map</h2>
+      <div id="map"></div>
+    </section>
+
+    <section class="panel">
+      <h2>7-Day Forecast</h2>
+      <div class="days" id="days"></div>
+    </section>
+
+    <div id="errorBox" class="error hidden" role="alert"></div>
+    <div id="skeleton" class="skeleton hidden" role="status" aria-live="polite">Loading weather…</div>
+  </main>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
